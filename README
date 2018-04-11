@@ -1,0 +1,14 @@
+stm32f0-baremetal
+
+The main goal of this source code is to show what's the minimal set of
+instructions needed to boot a board based on a ARM MCU.
+
+The target board is STM32F0-Discovery board, and the code shows the following
+features:
+- project with simple Makefile and linker script;
+- boot;
+- clock setting;
+- uart setup.
+
+The source code makes no usage of any external library and it is suitable for
+other ARM boards, with proper modifications.
