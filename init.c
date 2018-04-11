@@ -85,7 +85,7 @@ static void isr_reset(void)
 
 	/* Init systicks */
 	ticks = 0;
-	wr32(R_SYST_RVR, HCLCK / SYSTICKS_FREQ /* FIXME /8 ? */);
+	wr32(R_SYST_RVR, HCLCK / SYSTICKS_FREQ);
 	wr32(R_SYST_CVR, 0);
 	wr32(R_SYST_CSR, BIT0 | BIT1 | BIT2);
 
@@ -98,11 +98,6 @@ static void isr_reset(void)
 	/*  fPCLK=48MHz, br=115.2KBps, BRR=0x1A1, see table 104 pag. 704 */
 	wr32(R_USART1_BRR, 0x1a1);
 	or32(R_USART1_CR1, BIT3 | BIT0);
-
-	/* NOTE uncomment to check PLL/2 frequency out on PA9 pin
-	gpio_func(IO(PORTA, 8), 0);
-	or32(RCC_CFGR, 0b0111 << 24);
-	*/
 
 	main();
 }
