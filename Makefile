@@ -25,7 +25,7 @@ all: $(BIN)
 	$(CC) -c $(CFLAGS) $(INCFLAGS) -o $@ $<
 
 $(ELF): $(OBJS)
-	$(LD) $(OBJS) -Tstm32f4xx.ld -o $(ELF)
+	$(LD) $(OBJS) -Tstm32f0xx.ld -o $(ELF)
 
 $(BIN): $(ELF)
 	$(OBJCOPY) -O binary $(ELF) $(BIN)
