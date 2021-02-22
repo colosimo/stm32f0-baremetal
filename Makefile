@@ -12,7 +12,7 @@ LD              = $(CROSS_COMPILE)ld
 OBJCOPY         = $(CROSS_COMPILE)objcopy
 STRIP           = $(CROSS_COMPILE)strip
 
-CFLAGS += -mthumb -Wall -Werror -Os -mcpu=cortex-m0 -ggdb -nodefaultlibs -nostdlib -nostartfiles -ffreestanding
+CFLAGS += -mthumb -Wall -Werror -Os -mcpu=cortex-m0 -ggdb -nostartfiles -ffreestanding
 
 INCFLAGS += -Iinclude
 OBJS += init.o
@@ -25,7 +25,7 @@ all: $(BIN)
 	$(CC) -c $(CFLAGS) $(INCFLAGS) -o $@ $<
 
 $(ELF): $(OBJS)
-	$(LD) $(OBJS) -Tstm32f0xx.ld -o $(ELF)
+	$(CC) $(CFLAGS) $(OBJS) -Tstm32f0xx.ld -o $(ELF)
 
 $(BIN): $(ELF)
 	$(OBJCOPY) -O binary $(ELF) $(BIN)
